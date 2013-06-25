@@ -4,11 +4,16 @@ require 'sinatra/reloader' if development?
 
 # This should list all the movies
 get '/' do
+  movie_file = File.new('movies.csv', 'r')
+  @movies = []
+  movie_file.each do |line|
+    @movies << line.split(',')
+  end
   erb :movies
 end
 
 # This should show a single movie
-get '/movie/:name'
+get '/movie/:name' do
   erb :movie
 end
 
