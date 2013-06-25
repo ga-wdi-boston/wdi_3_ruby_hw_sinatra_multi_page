@@ -1,7 +1,9 @@
-<ul>
-  <% if @movies_title.include?(@name) %>
-  <p>show me some love</p>
-    <% end %>
-</ul>
 
-<a href="../new_movie" name="New Movie">Add Movie</a>
+<h3><%= @details[0] %></h3>
+<img src="<%= @details[3] %>" alt="<%= @details[0] %>" />
+<p>Year of Release: <%= @details[1] %></p>
+<p>Director: <%= @details[2] %></p>
+<p>Box Office Revenue: <%= @details[4] %></p>
+
+<a href="../" name="Back">Back</a>
+<a href="/new_movie" name="New Movie">Add Movie</a>

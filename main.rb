@@ -7,8 +7,7 @@ get '/' do
  link_file = File.new('movies.csv', 'r')
   @movies = []
   link_file.each do |line|
-    movie = line.split(',')
-    @movies << movie
+    @movies << line.split(',')[0]
   end
 
   erb :movies
@@ -16,16 +15,15 @@ end
 
 # This should show a single movie
 get '/movie/:name' do
+  @name = params[:name]
 
-  # link_file = File.new('movies.csv', 'r')
-  # @movies = []
-  # link_file.each do |line|
-  #   movie = line.split(',')
-  #   @movies << movie
-  #   params[:name] = movie[0].downcase
-  # end
-
-  # params[:name] = @name
+  link_file = File.new('movies.csv', 'r')
+  @details = []
+  link_file.each do |line|
+    if line.split(',')[0] == @name
+      @details = line.split(',')
+    end
+  end
 
   erb :movie
 end
@@ -44,11 +42,11 @@ post '/new_movie' do
   @revenue = params[:revenue]
 
   f = File.new('movies.csv', 'a+')
-  f.puts("#{@title},#{@year},#{@director},#{@image},#{@revenue}")
+  f.puts("#{@title}, #{@year}, #{@director}, #{@image}, #{@revenue}")
   f.close
 
-  redirect to("/") #for temp
+  redirect to("/")
 
   #This will send you to the newly created movie
-  # redirect to("/movies/#{@title}")
+  # redirect to("/movies/URI::encode(#{@title})")
 end
