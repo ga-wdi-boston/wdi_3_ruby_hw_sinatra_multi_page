@@ -2,13 +2,31 @@ require 'pry'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
+
+
 # This should list all the movies
 get '/' do
+  @titles = []
+  movie_file = File.open('movies.csv', 'r') do |file|
+    file.each_line do |line|
+      @titles << line.split(',')[0]
+    end
+  end
   erb :movies
 end
 
 # This should show a single movie
-get '/movie/:name'
+get '/movie/:name' do
+  @name = params[:name]
+  @info = []
+  movie_file = File.open('movies.csv', 'r') do |file|
+    file.each_line do |line|
+      @info = line.split(',')
+      if @info[0] == @name
+        break
+      end
+    end
+  end
   erb :movie
 end
 
@@ -24,3 +42,4 @@ post '/new_movie' do
   #This will send you to the newly created movie
   redirect to("/movies/#{@title}")
 end
+

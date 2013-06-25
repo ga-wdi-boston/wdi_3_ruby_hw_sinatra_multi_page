@@ -1,1 +1,8 @@
-
+<h1><%= @info[0] %></h1>
+<ul>
+  <li>Year of release: <%= @info[1] %></li>
+  <li>Director: <%= @info[2] %></li>
+  <li>Box office revenue: <%= @info[4] %></li>
+</ul>
+<img src="<%= @info[3]%>" alt="Image from <%= @info[0] %>" width=400/>
+<p><a href="<%= '/' %>">Back to home page</a>

@@ -1,0 +1,8 @@
+<h1>Welcome to the movie list!</h1>
+<ul>
+  <% @titles.each do |title| %>
+  <li><a href='<%= "/movie/#{title}" %>'><%= title %></a></li>
+  <% end %>
+</ul>
+
+<p><a href="<%= '/new_movie' %>">Add a new movie</a></p>

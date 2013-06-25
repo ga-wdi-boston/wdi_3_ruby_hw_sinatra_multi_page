@@ -1,0 +1,3 @@
+Notes to self
+
+Make a hash within the main page (movies) that uses titles as keys and can pass all other info to the subpage depending on which link was clicked.
