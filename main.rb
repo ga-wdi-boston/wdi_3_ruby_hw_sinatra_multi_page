@@ -4,15 +4,18 @@ require 'sinatra/reloader' if development?
 
 # This should list all the movies
 get '/' do
-	@movies
-	f = File.new("movies.csv", "r")
-	@movies << f.each.split(',')
+	@movies = []
+	movie_links = File.new("movies.csv", "r")
+	movie_links.each do |line|
+		@movies << line.split(",")
+	end
+	movie_links.close
 	erb :movies
 end
 
 # This should show a single movie
-get '/movie/:name'
-  erb :movie
+get '/movie/:name' do
+  	erb :movie
 end
 
 # This page should have a form to create a new movie, which will POST to /new_movie
