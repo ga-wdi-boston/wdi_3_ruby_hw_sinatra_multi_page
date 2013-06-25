@@ -15,6 +15,9 @@ end
 
 # This should show a single movie
 get '/movie/:name' do
+  @name = params[:name]
+  #redirect to("/movie/:name")
+
   erb :movie
 end
 
