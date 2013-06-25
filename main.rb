@@ -13,8 +13,14 @@ get '/' do
 	erb :movies
 end
 
+post '/new_movie' do
+	movie_links = File.new("movies.csv", "a+")
+	movie_links.close
+	erb :new_movie
+end
 # This should show a single movie
 get '/movie/:name' do
+
   	erb :movie
 end
 
