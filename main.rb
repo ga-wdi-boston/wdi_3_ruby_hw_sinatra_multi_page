@@ -44,7 +44,7 @@ post '/new_movie' do
   @revenue = params[:revenue]
   movie_title.puts("#{@title}, #{@year}, #{@director}, #{@link}, #{@revenue}")
   movie_title.close
-  redirect to ("/movies/#{URI::encode(@title)}")
+  redirect to ("/movie/#{URI::encode(@title)}")
 end
 
   #This will send you to the newly created movie
