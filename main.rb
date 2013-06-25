@@ -9,8 +9,25 @@ end
 
 # This should show a single movie
 get '/movie/:name'
-  erb :movie
+  movie_file = File.new('movies.csv', 'r')
+  @movie = []
+    movie_file.each do |line|
+      @movie << line.split(,)
+    end
+    movie_file.close
+    erb :movie
 end
+
+# get '/links' do
+#   link_file = File.new('links.csv', 'r')
+#   @links = []
+#   link_file.each do |line|
+#     @links << line.split(',')
+#   end
+#   link_file.close
+#   erb :links
+# end
+
 
 # This page should have a form to create a new movie, which will POST to /new_movie
 get '/new_movie' do
