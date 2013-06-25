@@ -14,7 +14,7 @@ get '/' do
 end
 
 # This should show a single movie
-get '/movie/:title' do
+get '/movies/:title' do
   @title = params[:title]
   list_of_movies = File.new('movies.csv', 'r')
   @movies = []
@@ -42,5 +42,5 @@ post '/new_movie' do
   add_movie.puts("#{@title},#{@year},#{@director},#{@image_link},#{@box_office}")
   add_movie.close
   #This will send you to the newly created movie
-  redirect to("/movie/#{@title}")
+  redirect to("/movies/#{@title}")
 end
