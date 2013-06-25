@@ -1,0 +1,9 @@
+<ul>
+  <% @movies.each do |movie| %>
+    <li>
+      <%= movie[0] %>
+    </li>
+    <% end %>
+</ul>
+
+<a href="/new_movie" name="New Movie">Add Movie</a>
