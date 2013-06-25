@@ -1,0 +1,10 @@
+<h1>Movie List</h1>
+
+<p>Click on individual movie links to see more information.</p>
+
+<ul>
+   <% @movies.each do |movie| %>
+      <a href="<%= movie[3] %>">      ##Need to change to actual link, not just the image link
+       <li><%= movie[0] %></li></a>
+    <% end %>
+</ul>
