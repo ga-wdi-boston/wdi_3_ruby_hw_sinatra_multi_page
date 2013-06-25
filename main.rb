@@ -4,11 +4,21 @@ require 'sinatra/reloader' if development?
 
 # This should list all the movies
 get '/' do
+  'Citizen Kane'
+  'King Kong'
+  'Blue Velvet'
+  'Vertigo'
+  'Fight Club'
+  'Psycho'
+  'The Third Man'
+  'Casablanca'
+  'Rear Window'
+  'Rebel Without A Cause'
   erb :movies
 end
 
 # This should show a single movie
-get '/movie/:name'
+get '/movie/:name' do
   erb :movie
 end
 
