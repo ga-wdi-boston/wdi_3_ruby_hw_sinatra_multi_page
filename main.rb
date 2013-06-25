@@ -13,11 +13,27 @@ get '/' do
   erb :movies
 end
 
+binding.pry
+
 
 # This should show a single movie
-get '/movie/:name'
+get '/movies/:name' do
+  [@movies_list][0] = params[:title]
+  [@movies_list][1] = params[:year]
+  [@movies_list][2] = params[:director]
+  [@movies_list][3] = params[:image]
+  [@movies_list][4] = params[:revenue]
+
+  # @title = [@movies_list][0]
+  # @year = [@movies_list][1]
+  # @director = [@movies_list][2]
+  # @image = [@movies_list][3]
+  # @revenue = [@movies_list][4]
+
   erb :movie
 end
+
+
 
 # # This page should have a form to create a new movie, which will POST to /new_movie
 # get '/new_movie' do
