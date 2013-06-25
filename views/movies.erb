@@ -2,12 +2,13 @@
 <ul>
 <% @movies.each do |line| %>
   <li>
-    <a href="<%= line[3] %>">
       Name: <%= line[0] %>
-    </a>
       Year: <%= line[1] %>
       Director: <%= line[2] %>
       Box Office: $<%= line[4] %>
+      <a href="<%= line[3] %>">
+      Image
+    </a>
   </li>
 <% end %>
 </ul>
