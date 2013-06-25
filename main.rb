@@ -14,8 +14,15 @@ get '/' do
 end
 
 # This should show a single movie
-get '/movies/:name' do
-
+get '/movie/:name' do
+	@name = params[:name]
+	@info = []
+	movie_links = File.new("movies.csv", "r")
+	movie_links.each do |line|
+		if line.split(",")[0] == @name then
+			@info = line.split(",")
+		end
+	end
   	erb :movie
 end
 
