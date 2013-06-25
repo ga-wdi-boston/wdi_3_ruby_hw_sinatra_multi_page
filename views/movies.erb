@@ -1,0 +1,13 @@
+<h1>List of Movies:</h1>
+<ul>
+<% @movies.each do |line| %>
+  <li>
+    <a href="<%= line[3] %>">
+      Name: <%= line[0] %>
+    </a>
+      Year: <%= line[1] %>
+      Director: <%= line[2] %>
+      Box Office: $<%= line[4] %>
+  </li>
+<% end %>
+</ul>
