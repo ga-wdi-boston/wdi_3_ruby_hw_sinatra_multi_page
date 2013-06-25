@@ -1,11 +1,13 @@
-<p><%= @movie_name[0] %></p>
+<h1><%= @movie_info[0] %></h1>
 
 <ul>
-  <% @movies.each do |movies| %>
-  <li>
-    <a href="<%= movies[3] %>">
-      <%= movies[0] %>
-    </a>
-  </li>
-<% end %>
+<li>Year released: <%= @movie_info[1] %></li>
+<li>Director: <%= @movie_info[2] %></li>
+<li>Revenue: <%= @movie_info[4] %></li>
 </ul>
+
+<a href="<%=@movie_info[3]%>"><img src="<%=@movie_info[3]%>" width=400/></a>
+
+
+
+
