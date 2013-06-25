@@ -1,1 +1,11 @@
+<p><%= @movie_name[0] %></p>
 
+<ul>
+  <% @movies.each do |movies| %>
+  <li>
+    <a href="<%= movies[3] %>">
+      <%= movies[0] %>
+    </a>
+  </li>
+<% end %>
+</ul>
