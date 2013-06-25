@@ -17,9 +17,11 @@ end
 get '/movies/:title' do
   @title = params[:title]
   list_of_movies = File.new('movies.csv', 'r')
-  @movies = []
+  @movie_details = []
   list_of_movies.each do |line|
-    @movies << line[0]
+    if line.split(',')[0] == @title then
+      @movie_details = line.split(',')
+    end
   end
   list_of_movies.close
   erb :movie
@@ -42,5 +44,5 @@ post '/new_movie' do
   add_movie.puts("#{@title},#{@year},#{@director},#{@image_link},#{@box_office}")
   add_movie.close
   #This will send you to the newly created movie
-  redirect to("/movies/#{@title}")
+  redirect to("/movies/#{URI::encode @title}")
 end

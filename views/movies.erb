@@ -2,13 +2,9 @@
 <ul>
 <% @movies.each do |line| %>
   <li>
-      Name: <%= line[0] %>
-      Year: <%= line[1] %>
-      Director: <%= line[2] %>
-      Box Office: $<%= line[4] %>
-      <a href="<%= line[3] %>">
-      Image
-    </a>
+    <a href='/movies/<%= line[0] %>'><%= line[0] %></a>
   </li>
 <% end %>
 </ul>
+
+<p><a href="/new_movie">Add A New Movie</a></p>
