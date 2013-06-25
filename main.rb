@@ -35,10 +35,11 @@ end
 post '/new_movie' do
 	movie_links = File.new("movies.csv", "a+")
 	@title = params[:title]
-	@year = params[:title]
+	@year = params[:year]
 	@director = params[:director]
 	@img_link = params[:img_link]
-	movie_links.puts("#{@title}, #{@year}, #{@director}, #{@img_link}")
+	@revenue = params[:revenue]
+	movie_links.puts("#{@title}, #{@year}, #{@director}, #{@img_link}, #{@revenue}")
 	movie_links.close
-	redirect to("/movie/#{@title}")
+	redirect to("/movie/#{URI::encode(@title)}")
 end
