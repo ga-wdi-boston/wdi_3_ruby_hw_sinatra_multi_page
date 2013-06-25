@@ -1,1 +1,29 @@
-<h1><%= @name %></h1>
+<% this_movie = @name.gsub('-',' ') %>
+<% this_line = [] %>
+<h1><%= this_movie %></h1>
+
+<% @movies.each do |movie_line|
+
+    if movie_line[0] == this_movie
+      this_line = movie_line
+    break
+    end
+  end
+  %>
+
+<p><strong>Title: </strong><%= this_line[0] %></h1></p>
+
+
+Citizen Kane,1941,Orson Welles,http://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Citizenkane.jpg/405px-Citizenkane.jpg,1585634
+
+<h1><%= this_line[0] %></h1>
+<h1><%= this_line[1] %></h1>
+<h1><%= this_line[2] %></h1>
+<h1><%= this_line[3] %></h1>
+<h1><%= this_line[4] %></h1>
+
+<img src="<%= this_line[3] %>" />
+
+
+
+

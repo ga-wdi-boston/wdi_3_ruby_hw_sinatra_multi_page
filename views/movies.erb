@@ -4,7 +4,11 @@
 
 <ul>
    <% @movies.each do |movie| %>
-      <a href="<%= movie[3] %>">      ##Need to change to actual link, not just the image link
+      <% nospace = movie[0].gsub(/\s/,'-') %>
+      <a href="/movie/<%= nospace %>">
        <li><%= movie[0] %></li></a>
     <% end %>
+
 </ul>
+
+
