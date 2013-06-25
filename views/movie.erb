@@ -1,8 +1,19 @@
-<h1><%= @info[0] %></h1>
-<ul>
-  <li>Year of release: <%= @info[1] %></li>
-  <li>Director: <%= @info[2] %></li>
-  <li>Box office revenue: <%= @info[4] %></li>
-</ul>
-<img src="<%= @info[3]%>" alt="Image from <%= @info[0] %>" width=400/>
+ <% unless @info == nil %>
+  <h1><%= @info[0] %></h1>
+  <ul>
+    <li>Year of release: <%= @info[1] %></li>
+    <li>Director: <%= @info[2] %></li>
+    <li>Box office revenue: <%= @info[4] %></li>
+  </ul>
+  <img src="<%= @info[3]%>" alt="Image from <%= @info[0] %>" width=400 />
+<% else %>
+  <form action="/new_movie" method="post">
+    <input type="text" name="title">
+    <input type="text" name="year">
+    <input type="text" name="director">
+    <input type="text" name="img_link">
+    <input type="text" name="revenue">
+    <button>Add movie</button>
+  </form>
+<% end %>
 <p><a href="<%= '/' %>">Back to home page</a>
