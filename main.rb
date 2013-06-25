@@ -18,7 +18,7 @@ get '/' do
 end
 
 # This should show a single movie
-get '/movie/:name'
+get '/movie/:name' do
   erb :movie
 end
 
