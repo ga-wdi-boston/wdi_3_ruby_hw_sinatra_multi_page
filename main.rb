@@ -4,21 +4,18 @@ require 'sinatra/reloader' if development?
 
 # This should list all the movies
 get '/' do
-  'Citizen Kane'
-  'King Kong'
-  'Blue Velvet'
-  'Vertigo'
-  'Fight Club'
-  'Psycho'
-  'The Third Man'
-  'Casablanca'
-  'Rear Window'
-  'Rebel Without A Cause'
+  movies = File.new('movies.csv','r')
+  @movies = []
+  movies.each do |line|
+  @movies << line.split(',')
+  end
+  movies.close
   erb :movies
 end
 
 # This should show a single movie
 get '/movie/:name' do
+  @movie = params[:name]
   erb :movie
 end
 
@@ -30,7 +27,30 @@ end
 # Create a new movie by sending a POST request to this URL
 post '/new_movie' do
   @title = params[:title]
-
+  @movie =params[:movie]
+  f =File.new('movies.csv', 'a+')
+  f.puts("#{@title}, #{@movie}")
+  f.close
   #This will send you to the newly created movie
   redirect to("/movies/#{@title}")
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
