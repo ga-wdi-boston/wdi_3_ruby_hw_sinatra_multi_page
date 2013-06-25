@@ -20,8 +20,9 @@ get '/movie/:name' do
   movie_title = File.new('movies.csv', 'r')
   movie_title.each do |movie|
     if movie.split(',')[0] == @name then
-      @info = line.split(',')
+      @info = movie.split(',')
     end
+  end
   erb :movie
 end
 
@@ -45,6 +46,6 @@ post '/new_movie' do
   movie_title.close
   redirect to ("/movies/#{URI::encode(@title)}")
 end
-end
+
   #This will send you to the newly created movie
   #redirect to("/movies/#{@title}")
