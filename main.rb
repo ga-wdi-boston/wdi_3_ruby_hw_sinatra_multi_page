@@ -13,6 +13,10 @@ get '/' do
 	erb :movies
 end
 
+get '/new_movie' do
+	erb :new_movie
+end
+
 post '/new_movie' do
 	movie_links = File.new("movies.csv", "a+")
 	@title = params[:title]
@@ -22,7 +26,6 @@ post '/new_movie' do
 	movie_links.puts("\n#{@title}, #{@year}, #{@director}, #{@img_link}")
 	movie_links.close
 	redirect to('/')
-	erb :new_movie
 end
 # This should show a single movie
 get '/movie/:name' do
