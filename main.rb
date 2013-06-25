@@ -14,6 +14,9 @@ get '/' do
 end
 
 # This should show a single movie
+# Goes through movies.cvs until it finds title from equal
+#  	to :name, then strips and splits entire line into array
+# 	used by movie.erb to create the page
 get '/movie/:name' do
 	@name = params[:name]
 	@info = []
