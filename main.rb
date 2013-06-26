@@ -4,58 +4,48 @@ require 'sinatra/reloader' if development?
 
 # This should list all the movies
 get '/' do
-  movies_file = File.new('movies.csv', 'r')
+  link_file = File.new('movies.csv', 'r')
   @movies = []
-    movies_file.each do |line|
+    link_file.each do |line|
       @movies << line.split(',')
     end
-  movies_file.close
+  link_file.close
   erb :movies
-end
+  end
 
 # This should show a single movie
 get '/movie/:name' do
-  movie_file = File.new('movie.csv', 'r')
-  @movie = {}
-    movie_file.each do |line|
+  link_file = File.new('movies.csv', 'r')
+  @name = params[:name]
+  @one_movie = []
+    link_file.each do |line|
+      if line.split(',')[0] == @name
+        @one_movie = line.split(',')
+      end
     end
-  movie_file.close
-  erb :movie
-end
-
+    #link_file.close
+    erb :movie
+  end
 
 # This page should have a form to create a new movie, which will POST to /new_movie
-get '/new_movie' do
- movie_file = File.new('movies.csv', 'r')
-  @movie = []
-  movie_file.each do |line|
-    @movie << line.split(',')
-  end
-  movie_file.close
-  erb :movie
-end
+#get '/new_movie' do
+ # erb :new_movie
+#end
 
 # Create a new movie by sending a POST request to this URL
-post '/new_movie' do
-  @movie_name = params[:name]
-  @movie = params[:movie]
-  f = File.new('movies.csv', 'a+')
-  f.puts("#{@movie_name},#{@movie}")
-  f.close
-  redirect to("/movie")
-  end
+   post '/new_movie' do
+     @title = params[:title]
+     @year_of_release = params[:year_of_release]
+     @director_name = params[:director_name]
+     @image = params[:image]
+     @box_office_revenue = params[:box_office_revenue]
 
-#   This will send you to the newly created movie
-#   redirect to("/movie/#{@title}")
-#   get '/movie' do
+     f = File.new('movies.csv', 'a+')
+     f.puts ("#{title}, #{year_of_release}, #{director_name},
+            #{image}, #{box_office_revenue}")
+    f.close
 
-# # URI::encode(@movie_title)
-# end
+ This will send you to the newly created movie
+   redirect to("/movie/#{URI::encode(@title)}")
 
-
-
-# @title = params[:title]
-#   @year_of_release = params[:year_of_release]
-#   @director_name = params[:director_name]
-#   @image = [:image] # need to import an image (url provided in movies.csv)
-#   @box_office_revenue = params[:box_office_revenue]
+end

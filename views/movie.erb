@@ -1,11 +1,1 @@
-<h1>Here is your movie choice!</h1>
-
-<ul>
-<% @movie.each do |movie| %>
-  <li>
-    <a href="<%= movie[0] %>">
-      <%= movie[0] %>
-    </a>
-  </li>
-<% end %>
-</ul>
+Name is: <%= @one_movie[0] %>
