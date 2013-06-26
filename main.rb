@@ -36,5 +36,5 @@ post '/new_movie' do
   f.puts("#{@title},#{@year_released},#{@director_name},#{@image_link},#{@box_office_revenue}")
   f.close
   #This will send you to the newly created movie
-  redirect to("/movies/#{@title}")
+  redirect to("/movie/#{URI::encode(@title)}")
 end
