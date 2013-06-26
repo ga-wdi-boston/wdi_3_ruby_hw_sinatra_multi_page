@@ -18,9 +18,9 @@ end
 get '/movie/:name' do
   @name = :name
   movie_file = File.new('movies.csv', 'r')
-  @movie = {}
+  @move_info = []
   movie_file.each do |movie, year|
-     p
+    @movie_info << movie.split('')
   end
   erb :movie
 end
