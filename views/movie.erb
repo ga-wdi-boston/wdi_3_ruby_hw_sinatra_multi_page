@@ -3,17 +3,18 @@
   <ul>
     <li>Year of release: <%= @info[1] %></li>
     <li>Director: <%= @info[2] %></li>
-    <li>Box office revenue: <%= @info[4] %></li>
+    <li>Box office revenue: $<%= @info[4] %></li>
   </ul>
   <img src="<%= @info[3]%>" alt="Image from <%= @info[0] %>" width=400 />
 <% else %>
   <form action="/new_movie" method="post">
-    <input type="text" name="title">
-    <input type="text" name="year">
-    <input type="text" name="director">
-    <input type="text" name="img_link">
-    <input type="text" name="revenue">
-    <button>Add movie</button>
+    <ul style='list-style: none'>
+      <li>Title: <input type="text" name="title" autofocus></li>
+      <li>Year of release: <input type="text" name="year"></li>
+      <li>Director: <input type="text" name="director"></li>
+      <li>Image URL: <input type="text" name="img_link"></li>
+      <li>Box office revenue: <input type="text" name="revenue"></li>
+      <li><button>Add movie</button></li>
   </form>
 <% end %>
 <p><a href="<%= '/' %>">Back to home page</a>

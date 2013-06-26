@@ -1,6 +1,7 @@
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'open-uri'
 
 
 
@@ -43,8 +44,7 @@ post '/new_movie' do
   movie_file = File.open('movies.csv', 'a+') do |file|
     file.puts("#{@info[0]},#{@info[1]},#{@info[2]},#{@info[3]},#{@info[4]}")
   end
-
   #This will send you to the newly created movie
-  redirect to("/movie/#{@title}")
+  redirect to("/movie/#{URI::escape(@title)}")
 end
 
