@@ -28,19 +28,22 @@ get '/' do
   erb :movie
  end
 
-
-# This page should have a form to create a new movie, which will POST to /new_movie
 get '/new_movie' do
-  @name = params[:name]
-  @year = params[:year]
-  @director = params[:director]
-  @image_link = params[:image_link]
-  @box_office = params[:box_office]
-  erb :movie
-  add_movie = File.new('movies.csv', 'a+')
-    add_movie.puts("#{@name},#{@year},#{@director},#{@image_link},#{@box_office}")
-  add_movie.close
   erb :new_movie
+end
+
+
+post '/new_movie' do
+  @title = params[:title]
+  @year_released = params[:year_released]
+  @director_name = params[:director_name]
+  @image_link = params[:image_link]
+  @box_office_revenue = params[:box_office_revenue]
+  f = File.new('movies.csv', 'a+')
+  f.puts("#{@title},#{@year_released},#{@director_name},#{@image_link},#{@box_office_revenue}")
+  f.close
+  #This will send you to the newly created movie
+  redirect to("/movie/#{URI::encode(@title)}")
 end
 
 
