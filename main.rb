@@ -19,9 +19,9 @@ get '/movie/:name' do
   @name = :name
   movie_file = File.new('movies.csv', 'r')
   @move_info = []
-  movie_file.each do |movie|
-    if line.split(',')[0] == @name then
-      @movie_info = line.split(',')
+  movie_file.each do |info|
+    if info.split(',')[0] == @name then
+      @movie_info = info.split(',')
     end
   end
   movie_file.close
