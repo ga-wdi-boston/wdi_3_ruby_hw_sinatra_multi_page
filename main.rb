@@ -36,6 +36,7 @@ end
    movie.file.each do |title|
     if title.split(',')[0] == @name
       then @single_movie = title.split(',')
+    erb :movie
     end
   end
   #got some great help from corbin
@@ -45,9 +46,6 @@ end
 
 
   # how to find 1) Loop through movie file until first thing thta contains movie title matches the title of the movie - what line is it on so i can retrieve info from that line to out put it?
-   end
-   erb :movie
- end
 
 # This page should have a form to create a new movie, which will POST to /new_movie
 #get '/new_movie' do
@@ -59,7 +57,7 @@ end
 # Create a new movie by sending a POST request to this URL
 get '/new_movie' do
   erb: :new_movie
-
+end
 post '/new_movie' do
   @title = params[:title]
   @year = params[:year]
