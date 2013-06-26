@@ -19,8 +19,10 @@ get '/movie/:name' do
   @name = :name
   movie_file = File.new('movies.csv', 'r')
   @move_info = []
-  movie_file.each do |movie, year|
-    @movie_info << movie.split('')
+  movie_file.each do |movie|
+    if line.split(',')[0] == @name
+      @movie_info = line.split(',')
+    end
   end
   erb :movie
 end
@@ -29,6 +31,10 @@ end
 get '/new_movie' do
   erb :movie
   @title = params[:title]
+  @year = params[:year]
+  @director = params[:director]
+  @budget = params[:budget]
+  @image = parm[:image]
 
 end
 
