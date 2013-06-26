@@ -1,0 +1,10 @@
+<h1>Awesome Movie Catalogue!!</h1>
+
+<p>Here are some good movie suggestions:</p>
+<ul>
+  <% @movies_db.each do |each_movie| %>
+  <li>
+    <a href="<%= each_movie[5] %>"><%= each_movie[0] %></a>
+  </li>
+  <% end %>
+</ul>

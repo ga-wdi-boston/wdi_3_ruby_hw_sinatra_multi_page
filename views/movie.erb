@@ -1,1 +1,11 @@
+<h1>Movie Information on "<%=@chosen_movie_array[0]%>"</h1>
 
+<img src="<%=@chosen_movie_array[3]%>", alt=Movie, height=250px>
+
+<p>Here is some useful information on this movie:</p>
+<ul>
+  <li>Title: <%=@chosen_movie_array[0]%></li>
+  <li>Year of Release: <%=@chosen_movie_array[1]%></li>
+  <li>Director: <%=@chosen_movie_array[2]%></li>
+  <li>Box Office Revenue: <%=if @chosen_movie_array[4].split.join != ""; @chosen_movie_array[4]; else "n/a"; end %></li>
+</ul>
