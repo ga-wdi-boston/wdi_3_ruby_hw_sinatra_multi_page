@@ -1,0 +1,16 @@
+<h1>Movie List</h1>
+
+<p>Click on an individual movie link to see more information!</p>
+
+<ul>
+   <% @movies.each do |movie| %>
+      <% nospace = movie[0].gsub(/\s/,'-') %>
+      <a href="/movie/<%= nospace %>">
+       <li><%= movie[0] %></li></a>
+    <% end %>
+
+</ul>
+
+<p>Click <a href="/new_movie">here</a> to add a movie to the database!</p>
+
+

@@ -1,1 +1,27 @@
+<% this_movie = @name.gsub('-',' ') %>
+<% this_line = [] %>
+<h1><%= this_movie %></h1>
+
+<% @movies.each do |movie_line|
+
+    if movie_line[0] == this_movie
+      this_line = movie_line
+    break
+    end
+  end
+  %>
+
+<img src="<%= this_line[3] %>" width=300 />
+
+<p><strong>Title: </strong><%= this_line[0] %></p>
+<p><strong>Year: </strong><%= this_line[1] %></p>
+<p><strong>Director: </strong><%= this_line[2] %></p>
+<p><strong>Budget: $</strong><%= this_line[4] %></p>
+
+<p><a href="/">Go back to movie list</a>.</p>
+
+
+
+
+
 
