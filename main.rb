@@ -33,8 +33,8 @@ get '/new_movie' do
   @title = params[:title]
   @year = params[:year]
   @director = params[:director]
-  @budget = params[:budget]
   @image = parm[:image]
+  @revenue = params[:revenue]
 
 end
 
