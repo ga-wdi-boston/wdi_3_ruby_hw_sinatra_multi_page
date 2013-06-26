@@ -1,0 +1,10 @@
+<h1>Movie Links</h1>
+<ul>
+<% @movies.each do |movie| %>
+  <li>
+    <a href="movie/<%=movie%>" style="text-decoration: none">
+      <%= movie %>
+    </a>
+  </li>
+<% end %>
+</ul>
