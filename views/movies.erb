@@ -1,0 +1,15 @@
+# A template file that mixes HTML code and embedded ruby.
+
+<h1>All Movies</h1>
+
+# each.each |key, value|. In this case,
+# title is our key, movie_data is the value
+# movie_data is an array
+
+<% @movies.each do |title, movie_data| %>
+  <section>
+    <header><%= movie_data %></header>
+    # <p><%= movie.description %></p>
+    # <b><%= movie.year_released %></b>
+  </section>
+<% end %>

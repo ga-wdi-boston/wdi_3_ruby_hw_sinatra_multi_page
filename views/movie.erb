@@ -1,1 +1,9 @@
+<h1>About this movie</h1>
 
+<% @movies.each do |movie| %>
+  <section>
+    <header><%= movie.title %></header>
+    <p><%= movie.description %></p>
+    <b><%= movie.year_released %></b>
+  </section>
+<% end %>
