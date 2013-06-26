@@ -40,7 +40,7 @@ post '/new_movie' do
   @image = params[:image]
 
   movies_file = File.new("movies.csv", "a+")
-  movies_file.puts("#{@title}, #{@year} #{@director}, #{@revenue}, #{@image}")
+  movies_file.puts("#{@title}, #{@year}, #{@director}, #{@image}, #{@revenue}")
   movies_file.close
 
   #This will send you to the newly created movie
