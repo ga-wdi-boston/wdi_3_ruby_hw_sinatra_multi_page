@@ -2,6 +2,10 @@ require 'pry'
 require 'sinatra' #notes - where does sinatra actually start?
 require 'sinatra/reloader' if development?
 # This should list all the movies
+
+#def get_movie_hash ()
+#movie_file =
+
 get '/allmovies' do
   movie_file = File.new('movies.csv','r') #creating variable that opens file
   @movies = []
@@ -34,6 +38,10 @@ end
       then @single_movie = title.split(',')
     end
   end
+  #got some great help from corbin
+# @name = params[:name]
+# @movies = get_movie_hash
+  # @movie = @movies[@name] replaces all the repeated iteration code
 
 
   # how to find 1) Loop through movie file until first thing thta contains movie title matches the title of the movie - what line is it on so i can retrieve info from that line to out put it?
@@ -60,8 +68,9 @@ post '/new_movie' do
   @box_office = params[:box_office]
   movies = File.new('movies.csv', 'a+')
   movies.puts "#{@title}, #{year}, #{director}, #{@image_url}, #{@box_office}"
+  movies.close
   #This will send you to the newly created movie
-  redirect to("/movies/#{@title}")
+  redirect to("/movie/#{URI::encode(@title)}")
 end
 
 
