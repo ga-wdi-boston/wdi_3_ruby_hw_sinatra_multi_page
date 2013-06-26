@@ -1,7 +1,7 @@
 <ul>
-  <% @movies.each do |link| %>
+  <% @movies.each do |title| %>
     <li>
-      <a href="<%= link[1] %>">
+      <a href="<%= title[0] %>">
         <%= link [0] %>
       </a>
     </li>

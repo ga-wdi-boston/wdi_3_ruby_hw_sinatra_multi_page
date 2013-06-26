@@ -1,9 +1,9 @@
 require 'pry'
-require 'sinatra'
+require 'sinatra' #notes - where does sinatra actually start?
 require 'sinatra/reloader' if development?
 # This should list all the movies
 get '/allmovies' do
-  movie_file = File.new('movies.csv','r')
+  movie_file = File.new('movies.csv','r') #creating variable that opens file
   @movies = []
   movie_file.each do |line|
     @movies << line.split(',')
@@ -12,12 +12,30 @@ get '/allmovies' do
   erb :movies
 end
 
+
+#if i had decided to treat @movies as hash
+# @movies = {}
+#movie_file.each do |movie_line|
+  #split_line=line_in_file.split(",")
+  #puts split_line.inspect
+  #title = split_line[0]
+  #puts title
+  #@movies[title] = split_line    #split line is the array for each movie
+#end
+#movie_file.close   #always have to close files after we use them
+
 # This should show a single movie
   get '/movie/:name' do
    @name = params[:name]
+   @single_movie = []
    movie_file = File.new('movies.csv','r')
-   loop movie.file.each do |movie|
-     until params[:name] = /movie/:name
+   movie.file.each do |title|
+    if title.split(',')[0] == @name
+      then @single_movie = title.split(',')
+    end
+  end
+
+
   # how to find 1) Loop through movie file until first thing thta contains movie title matches the title of the movie - what line is it on so i can retrieve info from that line to out put it?
    end
    erb :movie
@@ -31,19 +49,19 @@ end
 #end
 
 # Create a new movie by sending a POST request to this URL
+get '/new_movie' do
+  erb: :new_movie
+
 post '/new_movie' do
-
-  case params[:title].downcase
-      when
-
+  @title = params[:title]
+  @year = params[:year]
+  @director = params[:director]
+  @image_url = params[:image_url]
+  @box_office = params[:box_office]
+  movies = File.new('movies.csv', 'a+')
+  movies.puts "#{@title}, #{year}, #{director}, #{@image_url}, #{@box_office}"
   #This will send you to the newly created movie
   redirect to("/movies/#{@title}")
 end
 
-post '/navigate' do
-  case params[:destination].downcase
-    when "links" then redirect to("/links")
-    when "about" then redirect to ("/about")
-  end
-  redirect to("/")
 
