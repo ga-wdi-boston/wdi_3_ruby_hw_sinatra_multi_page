@@ -1,8 +1,10 @@
+<h1>Pick Your Movie!</h1>
+
 <ul>
-<% @movie.each do |movie| %>
+<% @movies.each do |movies| %>
   <li>
-    <a href="<%= movie[0] %>">
-      <%= movie[0] %>
+    <a href="<%= movies[0] %>">
+      <%= movies[0] %>
     </a>
   </li>
 <% end %>
