@@ -33,8 +33,8 @@ post '/new_movie' do
   @movies = MovieFile.get_movies
   @movies.each do |movie_line|
     if movie_line[0].downcase == @title.downcase
-      @movie_found_message = "This movie is already in our database."
-      redirect to("/new_movie?exist=1")
+      #@movie_found_message = "This movie is already in our database."
+      redirect to("/movie/#{@title.gsub(/\s/,'-')}")
     end
   end
     if    @movie_found_message==""
