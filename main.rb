@@ -8,7 +8,7 @@ get '/movies' do
   movies_file = File.new('movies.csv', 'r')
   @movies = []
   movies_file.each do |movie|
-    @movies << movie.split(',')
+    @movies << movie.split(',')[0]
   end
   movies_file.close
   erb :movies
@@ -23,6 +23,7 @@ get '/movie/:name' do
     if line.split(',')[0] == @name
       @movie_info = line.split(',')
     end
+    movie_file.close
   end
   erb :movie
 end
