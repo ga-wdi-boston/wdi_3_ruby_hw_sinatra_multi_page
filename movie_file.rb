@@ -1,6 +1,6 @@
 class MovieFile
   def self.get_movies
-    movie_file = File.new("movies.csv", "r")
+    movie_file = File.new("movies.csv", "a+")
     @movies = []
     movie_file.each do |movie_line|
       @movies << movie_line.split(",")
