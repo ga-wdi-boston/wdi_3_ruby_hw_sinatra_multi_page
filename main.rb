@@ -15,13 +15,15 @@ get '/' do
 end
 
 # This should show a single movie
-get '/movie/:name' do
+get '/movie/:title' do
+  @title = params[:title]
+
   erb :movie
 end
 
 # This page should have a form to create a new movie, which will POST to /new_movie
 get '/new_movie' do
-  erb :movie
+  erb :new_movie
 end
 
 # Create a new movie by sending a POST request to this URL
