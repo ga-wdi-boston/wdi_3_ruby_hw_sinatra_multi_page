@@ -17,10 +17,10 @@ end
 get '/movie/:name' do
   @name = params[:name]
   @single_movie = []
-  movies_file = File.new('movies.csv', 'a+')
+  movies_file = File.new('movies.csv', 'r')
   movies_file.each do |title|
     title.split(',')
-    if title.split(',')[0] = @name
+    if title.split(',')[0] == @name
       then @single_movie = title.split(',')
     end
   end
