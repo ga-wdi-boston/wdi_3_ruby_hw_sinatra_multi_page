@@ -45,12 +45,12 @@ post '/new_movie' do
   redirect to("/movie")
   end
 
-  This will send you to the newly created movie
-  redirect to("/movie/#{@title}")
-  get '/movie' do
+#   This will send you to the newly created movie
+#   redirect to("/movie/#{@title}")
+#   get '/movie' do
 
-# URI::encode(@movie_title)
-end
+# # URI::encode(@movie_title)
+# end
 
 
 
