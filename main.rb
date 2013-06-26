@@ -33,10 +33,13 @@ end
 # Create a new movie by sending a POST request to this URL
 post '/new_movie' do
   @title = params[:title]
-  @movie = params[:movie]
+  @year = params[:year]
+  @budget = params[:budget]
+  @image = params[:image]
+  @director = params[:director]
   movie_file = File.new("movies.csv", "a+")
-  movie_file.puts("\n#{@name},#{@year},#{@director},#{@image},#{@budget}")
+  movie_file.puts("\n#{@title},#{@year},#{@director},#{@image},#{@budget}")
   movie_file.close
   #This will send you to the newly created movie
-  redirect to("/movies/#{@title}")
+  redirect to("/movie/#{@title.gsub(/\s/,'-')}")
 end
