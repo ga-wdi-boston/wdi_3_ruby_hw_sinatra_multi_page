@@ -1,27 +1,18 @@
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require_relative 'movie_file'
 
 # This should list all the movies
 get '/' do
-  movie_file = File.new("movies.csv", "r")
-  @movies = []
-  movie_file.each do |movie_line|
-    @movies << movie_line.split(",")
-  end
-  movie_file.close
+  @movies = MovieFile.get_movies
   erb :movies
 end
 
 # This should show a single movie
 get '/movie/:name' do
   @name = params[:name]
-  movie_file = File.new("movies.csv", "r")
-  @movies = []
-    movie_file.each do |movie_line|
-      @movies << movie_line.split(",")
-    end
-  movie_file.close
+  @movies = MovieFile.get_movies
   erb :movie
 end
 
