@@ -1,0 +1,21 @@
+<!doctype html>
+<head>
+</head>
+<body>
+<h1>Pick Your Movie!</h1>
+
+<ul>
+<% @movies.each do |movies| %>
+  <li>
+    <a href="movie/<%= movies[0] %>">
+      <%= movies[0] %>
+    </a>
+  </li>
+<% end %>
+</ul>
+</body>
+</html>
+
+
+
+
