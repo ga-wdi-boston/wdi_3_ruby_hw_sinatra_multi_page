@@ -20,11 +20,11 @@ get '/movie/:name' do
   movie_file = File.new('movies.csv', 'r')
   @move_info = []
   movie_file.each do |movie|
-    if line.split(',')[0] == @name
+    if line.split(',')[0] == @name then
       @movie_info = line.split(',')
     end
-    movie_file.close
   end
+  movie_file.close
   erb :movie
 end
 
