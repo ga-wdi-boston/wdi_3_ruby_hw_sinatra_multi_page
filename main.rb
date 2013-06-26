@@ -2,13 +2,21 @@ require 'pry'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
+#movie titles
+#function that allows me to display movies
+
+
+
 # This should list all the movies
-get '/' do
-  erb :movies
+get '/' do                             #hit on homepage
+  @movies = File.new('movies.csv')
+  erb :home
 end
 
 # This should show a single movie
-get '/movie/:name'
+get '/movie/:name' do
+  # @movie = myMovies.new
+  # @movie.get_all_titles
   erb :movie
 end
 
@@ -24,3 +32,15 @@ post '/new_movie' do
   #This will send you to the newly created movie
   redirect to("/movies/#{@title}")
 end
+
+      # class myMovies
+      #   def initialize
+      #     @movie_titles = []
+      #   end
+
+      #   def get_all_titles
+      #     @movie_titles.each do |title|
+      #       p |title|
+      #     end
+      #   end
+      # end

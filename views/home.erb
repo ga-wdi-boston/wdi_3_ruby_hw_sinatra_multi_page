@@ -1,0 +1,16 @@
+<h1>Movies</h1>
+<ul>
+  <li><a href="movies.erb">TBD</a></li>
+
+
+  <% @movies.each do |line| %>
+  <%= line.split(',', 4)[0]%>
+  <% end %>
+
+
+  </ul>
+
+
+<!-- citizen_kane = @movies.each do |line|
+p  -->
+
