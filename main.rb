@@ -40,7 +40,7 @@ post '/new_movie' do
   @picture_url = params[:picture_url]
   @revenue = params[:revenue]
   f = File.new('movies.csv', 'a+')
-  f.puts("#{@title},#{@year},#{@director},#{@picture_url},#{@revenue}")
+  f.puts("#{@title},#{@year},#{@director},#{@picture_url},#{@revenue},")
   f.close
   #This will send you to the newly created movie
   redirect to("/movie/#{@title}")
