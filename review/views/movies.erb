@@ -1,0 +1,5 @@
+<ul>
+  <% @movies.each do |title, movie_data| %>
+    <li><%= movie_data[0] %>, Year: <%= movie_data[1] %> </li>
+  <%end%>
+</ul>
