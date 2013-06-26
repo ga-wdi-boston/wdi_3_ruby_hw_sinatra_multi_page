@@ -16,7 +16,15 @@ end
 # This should show a single movie
 get '/movie/:name' do
   @name = params[:name]
-
+  movie_file = File.new('movies.csv', 'r')
+  @movie = []
+  movie_file.each do |line|
+    if line.split(',')[0] == @name
+      @movie << line.split(',')
+    end
+  end
+  @movie.flatten!
+  movie_file.close
   erb :movie
 end
 
