@@ -10,6 +10,7 @@ get '/' do
 		@movies << line.split(",")[0]
 	end
 	movie_links.close
+	print @movies.inspect
 	erb :movies
 end
 
@@ -26,6 +27,7 @@ get '/movie/:name' do
 			@info = line.split(",")
 		end
 	end
+	movie_links.close
   	erb :movie
 end
 
