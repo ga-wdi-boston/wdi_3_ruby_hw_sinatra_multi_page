@@ -1,0 +1,12 @@
+<ul>
+<% @movies.each do |line| %>
+  <li>
+    <a href="<%= line[3] %>">
+      <%= line[0] %>
+      <%= line[1] %>
+      <%= line[2] %>
+      <%= line[4] %>
+    </a>
+  </li>
+<% end %>
+</ul>
