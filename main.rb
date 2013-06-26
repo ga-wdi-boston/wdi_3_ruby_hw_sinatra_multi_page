@@ -37,14 +37,32 @@ end
 
 # This page should have a form to create a new movie, which will POST to /new_movie
 get '/new_movie' do
-  erb :movie
+  erb :new_movie
 end
 
 # Create a new movie by sending a POST request to this URL
 post '/new_movie' do
   @title = params[:title]
+  @year_of_release = params[:year_of_release]
+  @director = params[:director]
+  @img_link = params[:img_link]
+  @revenue = params[:revenue]
+
+  f = File.new('movies.csv', 'a+')
+  f.puts("#{@title},#{@year_of_release},#{@director},#{@img_link},#{@revenue}\n")
+  f.close
 
   #This will send you to the newly created movie
-  redirect to("/movies/#{@title}")
+  redirect to("/movie/#{@title.split.join.downcase}")
 end
+
+
+
+
+
+
+
+
+
+
 
