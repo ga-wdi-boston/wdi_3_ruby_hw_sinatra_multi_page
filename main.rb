@@ -17,7 +17,18 @@ end
 # This should show a single movie
 get '/movie/:title' do
   @title = params[:title]
+  movie_file = File.new('movies.csv','r')
+  @movies = []
+  movie_file.each do |line|
+    @movies << line.split(',')
+    break if @movies.last[0] == @title
+  end
+  movie_file.close
 
+  @year_released = @movies.last[1]
+  @director = @movies.last[2]
+  @image_url = @movies.last[3]
+  @revenue = @movies.last[4]
   erb :movie
 end
 
