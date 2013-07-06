@@ -4,11 +4,10 @@
 <% @movies.each do |title, movie_data| %>
   <li>
 <a href="/movie/<%= movie_data[0] %>">
-    <%= "#{movie_data[0]}" %>
-  </a>
-  <%= " Year: #{movie_data[1]}" %> </li>
+    <%= "#{movie_data[0]}" %></a>
+ </li>
 <% end %>
 </ul>
 
-
+<a href="/new_movie">Add new Movie</a>
 

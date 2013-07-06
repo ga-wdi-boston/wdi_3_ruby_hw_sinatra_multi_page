@@ -1,4 +1,16 @@
-<% @movie %>
+<h1><%= @name %><h1>
+
+<ul>
+    <% @movies[@name].each do |descriptions| %>
+        <li>
+        <% if descriptions.include?(".jpg") %>
+            <img src="<%= descriptions %>">
+        <% else %>
+            <%=descriptions %>
+        <% end %>
+          </li>
+      <% end %>
+    </ul>
 
 
 
